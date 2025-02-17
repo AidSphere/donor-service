@@ -1,0 +1,26 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: Patient-Postgres-Container
+    environment:
+      POSTGRES_USER: Erandi
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: PatientDB
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:latest
+    container_name: Patient_redis_container
+    ports:
+      - "6379:6379"
+    environment:
+      REDIS_PASSWORD: test        # Sets the password for Redis
+    volumes:
+      - redis_data:/data
+
+volumes:
+  postgres_data:
+  redis_data:
